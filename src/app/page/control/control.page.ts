@@ -99,7 +99,7 @@ export class ControlPage{
     );
   }
 
-   // ASCII only
+  // ASCII only
   stringToBytes(string) {
     var array = new Uint8Array(string.length);
     for (var i = 0, l = string.length; i < l; i++) {
@@ -108,7 +108,7 @@ export class ControlPage{
     return array.buffer;
   }
 
- // ASCII only
+  // ASCII only
   bytesToString(buffer) {
     return String.fromCharCode.apply(null, new Uint8Array(buffer));
   }
