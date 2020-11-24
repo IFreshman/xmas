@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-item lines="none"></ion-item>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Scanning<span class="dots"><span>.</span><span>.</span><span>.</span></span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="panel">
+    <ion-list>
+      <ion-button class="img_btn" fill="solid" expand="block" ion-item *ngFor="let device of devices" (click)="Connect(device)">
+        <ion-icon *ngIf="device.name === 'OnsiteXmas'" name="bulb-outline"></ion-icon>
+        <ion-icon *ngIf="device.name !== 'onsitexmas'" name="phone-portrait-outline"></ion-icon>
+        <p>{{ device.name || 'Unnamed' }} <br/> ({{ device.id }})</p>
+      </ion-button>
+    </ion-list> 
+    <!-- <ion-button (click)="navigateDev()" color="primary" fill="solid" shape="round" expand="block">Scan</ion-button> -->
+  </div>
+</ion-content>
