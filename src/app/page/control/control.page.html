@@ -142,7 +142,7 @@
 
 <!--TODO: IOS segment picker--> 
 <ion-footer>
-  <ion-segment [(ngModel)]="segmentModel" >
+  <ion-segment [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)">
     <ion-segment-button value="view">
       <ion-icon name="list-outline"></ion-icon>
       <ion-label>View</ion-label>

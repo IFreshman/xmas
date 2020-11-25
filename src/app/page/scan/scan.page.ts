@@ -14,7 +14,13 @@ export class ScanPage {
   statusMessage: string;
   peripheral: any = {};
 
-  constructor(private loadingController: LoadingController, private ble:BLE, private ngZone: NgZone, private toastCtrl: ToastController, private router : Router) { 
+  constructor(
+    private loadingController: LoadingController, 
+    private ble:BLE, 
+    private ngZone: NgZone, 
+    private toastCtrl: ToastController, 
+    private router : Router
+  ) { 
 
   }
 
@@ -25,6 +31,10 @@ export class ScanPage {
   ionViewDidEnter(){
     this.scan();
     this.presentLoading();
+  }
+
+  ionViewWillLeave(){
+    this.ble.stopScan();
   }
 
   async presentLoading() {

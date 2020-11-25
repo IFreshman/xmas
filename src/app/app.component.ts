@@ -6,6 +6,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Location } from '@angular/common';
+import { BLE } from '@ionic-native/ble/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,8 @@ import { Location } from '@angular/common';
 })
 export class AppComponent {
 
+  peripheral: any = {};
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -21,7 +25,9 @@ export class AppComponent {
 
     private alertController: AlertController,
     private _location: Location,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    private ble: BLE,
+    private router: Router
   ) 
   {
     this.initializeApp();
@@ -46,7 +52,7 @@ export class AppComponent {
       this.showExitConfirm();
       processNextHandler();
     } else if(this._location.isCurrentPathEqualTo('/scan') ){
-      this._location.go('/home');
+      this.router.navigate(['home']);
     } else {
       // Navigate to back page
       console.log('Navigate to back page');

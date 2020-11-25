@@ -11,11 +11,13 @@
 <ion-content>
   <div class="panel">
     <ion-list>
-      <ion-button class="img_btn" fill="solid" expand="block" ion-item *ngFor="let device of devices" (click)="Connect(device)">
-        <ion-icon *ngIf="device.name === 'OnsiteXmas'" name="bulb-outline"></ion-icon>
-        <ion-icon *ngIf="device.name !== 'OnsiteXmas'" name="phone-portrait-outline"></ion-icon>
-        <p>{{ device.name || 'Unnamed' }} <br/> ({{ device.id }})</p>
-      </ion-button>
+      <div *ngFor="let device of devices">
+        <ion-button class="img_btn" fill="solid" expand="block" ion-item  *ngIf="device.name === 'OnsiteXmas'" (click)="Connect(device)">
+          <ion-icon *ngIf="device.name === 'OnsiteXmas'" name="bulb-outline"></ion-icon>
+          <ion-icon *ngIf="device.name !== 'OnsiteXmas'" name="phone-portrait-outline"></ion-icon>
+          <p>{{ device.name || 'Unnamed' }} <br/> ({{ device.id }})</p>
+        </ion-button>
+      </div>
     </ion-list> 
     <ion-button (click)="navigateDev()" color="primary" fill="solid" shape="round" expand="block">Scan</ion-button>
   </div>

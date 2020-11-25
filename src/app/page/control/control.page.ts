@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BLE } from '@ionic-native/ble/ngx';
 
@@ -25,6 +25,16 @@ export class ControlPage{
 
   peripheral: any = {};
 
+  ionViewWillEnter(){
+    this.changePowerMode(this.status);
+    this.changeBrightness(this.brightness);
+    this.changeColor(this.color);
+  }
+
+  ionViewWillLeave(){
+    this.Disconnect();
+  }
+
   colorPicker(colors) {
     this.background = colors;
     this.color = this.background.match(/\d+/g).toString();
@@ -37,6 +47,7 @@ export class ControlPage{
     this.active = name;
     this.color = transC;
     this.background = "rgb(" + transC + ")";
+    this.zone.run(() => this.color);
     //console.log(this.color, typeof(this.color));
     this.changeColor(this.color);
   }
@@ -47,16 +58,23 @@ export class ControlPage{
     } else {
       this.status = "off";
     }
+    this.zone.run(() => this.status);
     this.changePowerMode(this.status);
   }
 
   brightnessChanged(light){
     this.brightness = light.toString();
     console.log(typeof(this.brightness));
+    this.zone.run(() => this.brightness);
     this.changeBrightness(this.brightness);
   }
 
-  constructor(private router: Router, private ble: BLE, private route: ActivatedRoute) {
+  segmentChanged(data){
+    console.log("Hello? ", this.segmentModel);
+    this.zone.run(() => this.status);
+  }
+
+  constructor(private router: Router, private ble: BLE, private route: ActivatedRoute, private zone: NgZone) {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.peripheral = this.router.getCurrentNavigation().extras.state.user;
