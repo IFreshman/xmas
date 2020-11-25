@@ -37,7 +37,7 @@ export class ScanPage {
 
   scan() {
     this.devices = [];
-    this.ble.scan([], 15).subscribe(
+    this.ble.scan([], 5).subscribe(
       device => this.onDeviceDiscovered(device)
     );
   }
@@ -89,6 +89,7 @@ export class ScanPage {
       position: 'middle'
     });
     (await toast).present();
+    this.router.navigate(['scan']);
   }
   
   setStatus(message) {

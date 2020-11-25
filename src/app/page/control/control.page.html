@@ -11,7 +11,7 @@
     <ion-toggle slot="end" color="dark" (ionChange)="powerChanged($event.detail)" checked="true"></ion-toggle>
   </ion-toolbar>
   <ion-item>
-    <ion-range min="1" max="150" color="dark" [(ngModel)]="light" (ionChange)="brightnessChanged()" debounce="30">
+    <ion-range min="1" max="150" color="dark" [(ngModel)]="brightness" (ionChange)="brightnessChanged(brightness)" debounce="30">
       <ion-icon size="small" slot="start" name="sunny"></ion-icon>
       <ion-icon slot="end" name="sunny"></ion-icon>
     </ion-range>
@@ -30,7 +30,7 @@
     <ion-row>
       <ion-item>
         <ion-label>Intensity:</ion-label>
-        <ion-badge color="primary" slot="end">{{light}}</ion-badge>
+        <ion-badge color="primary" slot="end">{{brightness}}</ion-badge>
       </ion-item>
     </ion-row>
     <ion-row>
@@ -140,6 +140,7 @@
   </ion-grid>
 </ion-content>
 
+<!--TODO: IOS segment picker--> 
 <ion-footer>
   <ion-segment [(ngModel)]="segmentModel" >
     <ion-segment-button value="view">

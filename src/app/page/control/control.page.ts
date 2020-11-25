@@ -18,7 +18,7 @@ export class ControlPage{
   active: string;
 
   status: string = "on";
-  light: string = "75";
+  brightness: string = "75";
   color: string = "220,0,116";
 
   background: string = "rgb(220,0,116)";
@@ -50,8 +50,10 @@ export class ControlPage{
     this.changePowerMode(this.status);
   }
 
-  brightnessChanged(){
-    this.changeBrightness(this.status);
+  brightnessChanged(light){
+    this.brightness = light.toString();
+    console.log(typeof(this.brightness));
+    this.changeBrightness(this.brightness);
   }
 
   constructor(private router: Router, private ble: BLE, private route: ActivatedRoute) {
@@ -67,8 +69,6 @@ export class ControlPage{
   }
 
   changePowerMode(value){
-    var set = this.ble.read(this.peripheral.id, service_uuid, controlChar_uuid);  
-    console.log(JSON.stringify(set));
     this.ble.write(
       this.peripheral.id, 
       service_uuid, 
@@ -78,8 +78,6 @@ export class ControlPage{
   }
 
   changeBrightness(value){
-    var set = this.ble.read(this.peripheral.id, service_uuid, brightChar_uuid);  
-    console.log(JSON.stringify(set));
     this.ble.write(
       this.peripheral.id, 
       service_uuid, 
@@ -89,8 +87,6 @@ export class ControlPage{
   }
 
   changeColor(value){
-    var set = this.ble.read(this.peripheral.id, service_uuid, colorChar_uuid);  
-    console.log(JSON.stringify(set));
     this.ble.write(
       this.peripheral.id, 
       service_uuid,

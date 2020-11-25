@@ -45,6 +45,8 @@ export class AppComponent {
       console.log('Show Exit Alert!');
       this.showExitConfirm();
       processNextHandler();
+    } else if(this._location.isCurrentPathEqualTo('/scan') ){
+      this._location.go('/home');
     } else {
       // Navigate to back page
       console.log('Navigate to back page');
