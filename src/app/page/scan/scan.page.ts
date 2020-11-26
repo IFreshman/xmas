@@ -24,7 +24,7 @@ export class ScanPage {
 
   }
 
-  ionViewDidEnter(){
+  ionViewWillEnter(){
     this.scan();
     this.presentLoading();
   }
