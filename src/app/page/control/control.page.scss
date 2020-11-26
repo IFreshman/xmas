@@ -35,15 +35,25 @@ ion-toolbar{
 
 //Segment 'View'
 ion-grid.view{
-    ion-item{
+    ion-card-header{
         width: 100%;
-    }
+        padding: 10px;
+        span{
+            font-size: large;
+        }
+        ion-badge{
+            float: right;
+        }
 
-    ion-icon{
-        color: transparent;
-        border: 1px solid white;
-        border-radius: 25%;
-    }    
+        ion-col.my-thin-col {
+            flex: 0 0 32px;
+            padding:0;
+            margin-right: 6px;
+        
+            border-radius: 22%;
+            border: 1px solid white;
+        }
+    }
 }
 
 //Segment 'Profile' 

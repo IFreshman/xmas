@@ -24,10 +24,6 @@ export class ScanPage {
 
   }
 
-  navigateDev(){
-    this.router.navigate(['control']);
-  }
-
   ionViewDidEnter(){
     this.scan();
     this.presentLoading();
@@ -82,7 +78,7 @@ export class ScanPage {
     let toast = this.toastCtrl.create({
       message: 'Connected to ' + peripheral.name,
       duration: 3000,
-      position: 'middle'
+      position: 'bottom'
     });
     (await toast).present();
     this.ngZone.run(() => {
@@ -96,7 +92,7 @@ export class ScanPage {
     let toast = this.toastCtrl.create({
       message: 'Disconnected from ' + peripheral.name,
       duration: 3000,
-      position: 'middle'
+      position: 'bottom'
     });
     (await toast).present();
     this.router.navigate(['scan']);

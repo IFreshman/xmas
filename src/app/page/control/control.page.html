@@ -22,33 +22,42 @@
   <!-- Segment View-->
   <ion-grid *ngIf="segmentModel === 'view'" class="view">
     <ion-row>
-      <ion-item>
-        <ion-label>Power:</ion-label>
-        <ion-badge [color]="status === 'off' ? 'primary' : 'success'" slot="end">{{status}}</ion-badge>
-      </ion-item>
+      <ion-card-header>
+        <ion-row justify-content-between>
+          <ion-col>      
+            <span item-left>Power:</span>
+          </ion-col>
+          <ion-col>
+            <ion-badge style="float:right" [color]="status === 'off' ? 'primary' : 'success'">{{status}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-card-header>
     </ion-row>
     <ion-row>
-      <ion-item>
-        <ion-label>Intensity:</ion-label>
-        <ion-badge color="primary" slot="end">{{brightness}}</ion-badge>
-      </ion-item>
+      <ion-card-header>
+        <ion-row justify-content-between>
+          <ion-col>      
+            <span item-left>Intensity:</span>
+          </ion-col>
+          <ion-col>
+            <ion-badge color="primary">{{brightness}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-card-header>
     </ion-row>
     <ion-row>
-      <!--<ion-label>Color:</ion-label>
-      <ion-icon name="ellipse-outline" [(colorPicker)]="color" [style.background]="color" [cpOKButton]="true" [cpCancelButton]="true"
-        (colorPickerChange)="selectColor($event)"></ion-icon>-->
-      <ion-item>
-        <ion-label>Color (Experimental):</ion-label>
-        <ion-icon name="ellipse-outline" slot="end"[style.background]="background" [(colorPicker)]="background"
-        [cpPositionRelativeToArrow]="true"
-        [cpOKButton]="true" [cpCancelButton]="true" [cpOutputFormat]="'rgba'" 
-        (colorPickerChange)="colorPicker($event)"></ion-icon>
-      </ion-item>
+      <ion-card-header>
+        <ion-row justify-content-between>
+          <ion-col>      
+            <span item-left>Color:</span>
+          </ion-col>
+          <ion-col class="my-thin-col" [(colorPicker)]="background" [style.background]="background"
+          [cpPositionRelativeToArrow]="true" [cpPosition]="'top-left'"
+          [cpOKButton]="true" [cpCancelButton]="true" [cpOutputFormat]="'rgba'" 
+          (colorPickerChange)="colorPicker($event)"></ion-col>
+        </ion-row>
+      </ion-card-header>
     </ion-row>
-
-    <ion-card>
-      <div [style.background]="background" style="height: 100px;" class="mydiv"></div>
-    </ion-card>
   </ion-grid>
 
   <!-- Segment Profile-->
@@ -140,8 +149,7 @@
   </ion-grid>
 </ion-content>
 
-<!--TODO: IOS segment picker--> 
-<ion-footer>
+<ion-footer mode="md">
   <ion-segment [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)">
     <ion-segment-button value="view">
       <ion-icon name="list-outline"></ion-icon>

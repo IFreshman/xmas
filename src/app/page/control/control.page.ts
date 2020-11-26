@@ -14,6 +14,7 @@ const brightChar_uuid     = "5cd72205-09d2-4a58-b704-f59bca4bfc8c";
   styleUrls: ['./control.page.scss'],
 })
 export class ControlPage{
+  public Ccolor: string = "#fff500";
   segmentModel: string = "view";
   active: string;
 
@@ -25,12 +26,14 @@ export class ControlPage{
 
   peripheral: any = {};
 
+  //Reset settings after connect
   ionViewWillEnter(){
     this.changePowerMode(this.status);
     this.changeBrightness(this.brightness);
     this.changeColor(this.color);
   }
 
+  //Disconnect if the user leave the page (hardware- and backbutton)
   ionViewWillLeave(){
     this.Disconnect();
   }
@@ -39,7 +42,6 @@ export class ControlPage{
     this.background = colors;
     this.color = this.background.match(/\d+/g).toString();
     this.active = 'none';
-    //console.log(this.color, typeof(this.color));
     this.changeColor(this.color);
   }
 
@@ -48,7 +50,6 @@ export class ControlPage{
     this.color = transC;
     this.background = "rgb(" + transC + ")";
     this.zone.run(() => this.color);
-    //console.log(this.color, typeof(this.color));
     this.changeColor(this.color);
   }
 
@@ -64,13 +65,11 @@ export class ControlPage{
 
   brightnessChanged(light){
     this.brightness = light.toString();
-    console.log(typeof(this.brightness));
     this.zone.run(() => this.brightness);
     this.changeBrightness(this.brightness);
   }
 
   segmentChanged(data){
-    console.log("Hello? ", this.segmentModel);
     this.zone.run(() => this.status);
   }
 
@@ -86,6 +85,7 @@ export class ControlPage{
     this.ble.disconnect(this.peripheral.id);
   }
 
+  //BLE Write Functions
   changePowerMode(value){
     this.ble.write(
       this.peripheral.id, 
