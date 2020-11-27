@@ -1,7 +1,7 @@
 {
-  "name": "xmas",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "name": "onsitexmas",
+  "version": "1.0",
+  "author": "Denis Kreiner",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
