@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "de.tsystems.onsite.xmas",
   "appName": "xmas",
   "bundledWebRuntime": false,
   "npmClient": "npm",

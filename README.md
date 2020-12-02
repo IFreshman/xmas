@@ -100,7 +100,7 @@ Weiteres Vorgehen wird in der Dokumentation von Capacitor erklären: [Deploying 
  - usw. (Orientieren an Philips Hue bzw. das weiterentwickeln)
 
 #### Leute, die dran gearbeitet haben (bei Weiterentwicklung, bitte dazu schreiben)
- - Version 0.0.1: Philip 
+ - Version 0.0.1: Philip Thanh Vu Tran, philip-thanh-vu.tran@t-systems.com
  - Version 1.0: Denis Kreiner, denis.kreiner@t-systems.com
 
 
